@@ -34,7 +34,7 @@ module.exports = (env, argv) => {
             },
             // CSS
             {
-               test: /\.css$/,
+               test: /\.(scss|sass|css)$/,
                include: SRC_DIR,
                exclude: /node_modules/,
                use: [
@@ -42,24 +42,16 @@ module.exports = (env, argv) => {
                   {
                      loader: "css-loader",
                      options: {
-                        sourceMap: isDev,
-                        importLoaders: 1
+                        modules: {
+                           localIdentName: "[local]_[hash:base64:5]"
+                        },
+                        sourceMap: true
                      }
                   },
                   {
-                     loader: "postcss-loader",
+                     loader: "sass-loader",
                      options: {
-                        postcssOptions: {
-                           plugins: [
-                              [
-                                 "postcss-preset-env",
-                                 {
-                                    ident: "postcss",
-                                    sourceMap: isDev
-                                 }
-                              ]
-                           ]
-                        }
+                        sourceMap: true
                      }
                   }
                ]
@@ -72,7 +64,20 @@ module.exports = (env, argv) => {
                   loader: "html-loader",
                   options: { minimize: true }
                }
-            }
+            },
+            {
+               test: /\.(woff2?|ttf|eot)$/,
+               use: [
+                  {
+                     loader: "file-loader",
+                     options: {
+                        name: "[name].[ext]",
+                        outputPath: "fonts/",
+                        publicPath: "/fonts/"
+                     }
+                  }
+               ]
+            },
          ]
       },
       plugins: [
