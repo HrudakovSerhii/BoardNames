@@ -44,5 +44,7 @@
   "engines": {
     "node": ">=12.0.0"
   },
-  "browserslist": ["last 2 versions"]
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
