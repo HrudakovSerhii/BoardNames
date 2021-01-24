@@ -4,4 +4,8 @@
   border: none;
   background-color: transparent;
   padding: 0;
+
+  &:focus {
+    outline: none;
+  }
 }
