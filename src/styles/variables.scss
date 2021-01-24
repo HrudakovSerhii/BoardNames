@@ -39,8 +39,8 @@ $icon-size: 30px;
   --spacer-4: calc(var(--base-font-size) * 2);
 
   --base-button-spasing: 8px;
-  --button-spacer-1: calc(var(--base-font-size));
-  --button-spacer-2: calc(var(--base-font-size) * 2);
-  --button-spacer-3: calc(var(--base-font-size) * 3);
+  --button-spacer-1: calc(var(--base-button-spasing));
+  --button-spacer-2: calc(var(--base-button-spasing) * 2);
+  --button-spacer-3: calc(var(--base-button-spasing) * 3);
 }
 
