@@ -10,7 +10,7 @@ export const BoardItem = ({ text, onRemove }) => {
    const isInvalid = !emailRegexp.test(text);
 
    return (
-      <div className={`${s.boardItem} ${isInvalid ? s.invalidBoardItem : ""}`}>
+      <div className={`${s.boardItem} ${s.baseBoardItem} ${isInvalid ? s.invalidBoardItem : ""}`}>
          <span>{text}</span>
          <CloseButton onClick={onRemove} />
       </div>
