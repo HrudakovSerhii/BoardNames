@@ -3,7 +3,7 @@ module.exports = function (api) {
 
    const devMode = process.env.NODE_ENV === "development";
 
-   const commonPresets = [["@babel/preset-typescript"], ["@babel/preset-react"]];
+   const commonPresets = ["@babel/preset-react"];
 
    let presets = [];
 
@@ -16,9 +16,6 @@ module.exports = function (api) {
          [
             "@babel/preset-env",
             {
-               useBuiltIns: "usage",
-               corejs: "3.0.1",
-               modules: false,
                targets: {
                   chrome: "61",
                   safari: "12",
@@ -34,7 +31,7 @@ module.exports = function (api) {
    const plugins = [
       "@babel/plugin-syntax-dynamic-import",
       "@babel/plugin-transform-runtime",
-      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-proposal-object-rest-spread"
    ];
 
    return {

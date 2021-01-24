@@ -1,11 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-require("./styles/index.css");
+import App from "./App";
 
-const App: React.FC = () => {
-   return <div className="main">Hello App </div>;
-};
+require("./styles/index.scss");
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

@@ -9,30 +9,36 @@ module.exports = (env, argv) => {
    const isDev = argv.mode !== "prod";
 
    return {
-      entry: [SRC_DIR + "/index.tsx"],
+      entry: {
+         app: `${SRC_DIR}/index.jsx`
+      },
       output: {
          path: DIST_DIR,
+         chunkFilename: isDev ? "js/[name].js" : "js/[name].[contenthash].js",
+         filename: isDev ? "js/[name].js" : "js/[name].[contenthash].js",
          publicPath: "/"
       },
-      devtool: isDev && "source-map",
+      devtool: "inline-source-map",
       devServer: {
          port: 3000,
          contentBase: DIST_DIR
       },
       resolve: {
+         modules: ["src", "node_modules"],
          extensions: [".js", ".jsx"]
       },
+      externals: "/node_modules",
       module: {
          rules: [
             // js
             {
-               test: /\.(js|jsx|tsx)$/,
+               test: /\.(js|jsx)$/,
                exclude: /node_modules/,
                use: {
                   loader: "babel-loader"
                }
             },
-            // CSS
+            // css
             {
                test: /\.(scss|sass|css)$/,
                include: SRC_DIR,
@@ -65,6 +71,7 @@ module.exports = (env, argv) => {
                   options: { minimize: true }
                }
             },
+            // Files
             {
                test: /\.(woff2?|ttf|eot)$/,
                use: [
@@ -77,14 +84,13 @@ module.exports = (env, argv) => {
                      }
                   }
                ]
-            },
+            }
          ]
       },
       plugins: [
          new webpack.HotModuleReplacementPlugin(),
          new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: "[name].[hash].css"
          }),
          new HtmlWebpackPlugin({
             filename: `${DIST_DIR}/index.html`,
