@@ -4,12 +4,12 @@
   background-color: blue;
   border-radius: 6px;
   border: none;
-  padding: var(--button-spacer-1) var(--button-spacer-2);
+  padding: var(--baseline-2) var(--baseline-4);
 
   span {
     color: $white;
     font-size: var(--base-font-size);
-    line-height: var(--button-spacer-3);
+    line-height: var(--baseline-6);
     vertical-align: center;
   }
 }
