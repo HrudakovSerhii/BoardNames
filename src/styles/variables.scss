@@ -4,12 +4,12 @@ $black: #202023;
 $gray-light: #f4f4f4;
 $gray: #c4c4c4;
 $white: #fff;
-$blue-light: #0144c5;
+$blue: #4262FF;
 
 $base-font-color: $black;
 
 // typography
-$base-font-family: "Walsheim";
+$base-font-family: "OpenSans";
 $base-font-size: 14px;
 $small-font-size: 0.875rem;
 $base-line-height: 1.25rem;
@@ -21,11 +21,12 @@ $normal-font-weight: 500;
 $bold-font-weight: 700;
 
 // container
-$product-item-min-width: 250px;
-$product-item-max-width: 320px;
-$product-image-width: 200px;
-$min-compare-options-width: 270px;
-$max-view-width: 1300px;
+$bord-max-width: 540px;
+$emails-list-max-width: 440px;
+
+// Button
+$button-min-height: 40px;
+$email-item-min-height: 24px;
 
 // Icons
 $icon-size: 30px;
@@ -36,5 +37,10 @@ $icon-size: 30px;
   --spacer-1: calc(var(--base-font-size) / 2);
   --spacer-2: calc(var(--base-font-size));
   --spacer-4: calc(var(--base-font-size) * 2);
+
+  --base-button-spasing: 8px;
+  --button-spacer-1: calc(var(--base-font-size));
+  --button-spacer-2: calc(var(--base-font-size) * 2);
+  --button-spacer-3: calc(var(--base-font-size) * 3);
 }
 

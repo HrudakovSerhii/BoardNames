@@ -1,0 +1,17 @@
+@import "../../../styles/variables";
+
+.root {
+  padding: 0;
+  border: none;
+  background-color: $white;
+
+  span {
+    background-color: blue;
+    border-radius: var(--button-spacer-1);
+    color: $white;
+    font-size: var(--base-font-size);
+    line-height: var(--button-spacer-3);
+    vertical-align: center;
+    padding: var(--button-spacer-1) var(--button-spacer-2);
+  }
+}
