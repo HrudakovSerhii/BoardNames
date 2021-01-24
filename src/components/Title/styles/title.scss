@@ -1,0 +1,11 @@
+@import "src/styles/variables";
+
+.root {
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  color: $black;
+
+  span {
+    font-weight: $bold-font-weight;
+  }
+}
