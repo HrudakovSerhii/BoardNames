@@ -40,3 +40,35 @@
     }
   }
 }
+
+.boardContent {
+  height: 100%;
+  background-color: $white;
+  border-radius: var(--baseline-1);
+  padding: var(--baseline-1);
+}
+
+.boardItem {
+  display: inline-block;
+  background-color: $flower-blue;
+  border: $flower-blue solid 1px;
+  border-radius: 100px;
+  padding: 0 var(--baseline-2);
+  margin-top: var(--baseline-1);
+  margin-left: var(--baseline-1);
+
+  span {
+    line-height: $email-item-min-height;
+    vertical-align: center;
+    padding-right: var(--baseline-1);
+  }
+
+  &.invalidBoardItem {
+    background-color: $white;
+    border: none;
+    border-bottom: 1px dashed red;
+    border-radius: unset;
+    margin: 0 var(--baseline-2);
+    padding: 0;
+  }
+}
