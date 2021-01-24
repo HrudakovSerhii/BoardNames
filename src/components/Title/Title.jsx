@@ -2,7 +2,7 @@ import React from "react";
 
 import s from "./styles/title.scss";
 
-const Title = ({ text, boltedText, className = "" }) => {
+const Title = ({ text, boltedText = "", className = "" }) => {
    if (!boltedText) return <span className={`${s.root} ${className}`}>{text}</span>;
    else {
       const separator = "_";
