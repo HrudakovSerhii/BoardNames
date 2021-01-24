@@ -1,7 +1,7 @@
 @import "../../../styles/variables";
 
 .root {
-  background-color: blue;
+  background-color: $blue;
   border-radius: 6px;
   border: none;
   padding: var(--baseline-2) var(--baseline-4);
