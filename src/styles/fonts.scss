@@ -1,12 +1,11 @@
-// Necessary for the webpack build
 @font-face {
-  font-family: "Walsheim";
-  src: url("../../public/assets/fonts/OpenSans-Regular.ttf") format("ttf");
+  font-family: "OpenSans";
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
   font-weight: 500;
 }
 
 @font-face {
-  font-family: "Walsheim";
-  src: url("../../public/assets/fonts/OpenSans-Bold.ttf") format("ttf");
+  font-family: "OpenSans-Bold";
+  src: local('Open Sans Bold'), local('OpenSans Bold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff) format('woff');
   font-weight: 700;
 }
