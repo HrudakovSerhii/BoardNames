@@ -2,7 +2,7 @@
 // colors
 $black: #202023;
 $gray-light: #f4f4f4;
-$gray: #c4c4c4;
+$gray: #F8F8F7;
 $white: #fff;
 $blue: #4262FF;
 
@@ -18,11 +18,12 @@ $h2-font-size: $base-font-size * 2;
 $h4-font-size: $base-font-size * 1.2;
 
 $normal-font-weight: 500;
-$bold-font-weight: 700;
+$bold-font-weight: 800;
 
 // container
 $bord-max-width: 540px;
 $emails-list-max-width: 440px;
+$bord-content-min-height: 96px;
 
 // Button
 $button-min-height: 40px;
@@ -32,15 +33,32 @@ $email-item-min-height: 24px;
 $icon-size: 30px;
 
 :root {
+  --margin-1: 1rem;
+  --margin-2: 1.333rem;
+  --margin-3: 1.777rem;
+  --margin-4: 2.369rem;
+  --margin-5: 3.157rem;
+  --margin-6: 4.209rem;
+
   // spacing
   --base-font-size: 14px;
   --spacer-1: calc(var(--base-font-size) / 2);
   --spacer-2: calc(var(--base-font-size));
+  --spacer-3: calc(var(--base-font-size) / 2 * 3);
   --spacer-4: calc(var(--base-font-size) * 2);
+  --spacer-5: calc(var(--base-font-size) / 2 * 5);
+  --spacer-6: calc(var(--base-font-size) * 3);
 
-  --base-button-spasing: 8px;
-  --button-spacer-1: calc(var(--base-button-spasing));
-  --button-spacer-2: calc(var(--base-button-spasing) * 2);
-  --button-spacer-3: calc(var(--base-button-spasing) * 3);
+  --baseline: 8px;
+  --baseline-1: calc(var(--baseline) / 2); // 4
+  --baseline-2: calc(var(--baseline)); //8
+  --baseline-3: calc(var(--baseline) / 2 * 3);// 12
+  --baseline-4: calc(var(--baseline) * 2); // 16
+  --baseline-5: calc(var(--baseline) / 2 * 5);//20
+  --baseline-6: calc(var(--baseline) * 3);//24
+  --baseline-7: calc(var(--baseline) / 2 * 7);//28
+  --baseline-8: calc(var(--baseline) * 4);//32
+  --baseline-9: calc(var(--baseline) / 2 * 8);//36
+  --baseline-10: calc(var(--baseline) * 5);//40
 }
 
