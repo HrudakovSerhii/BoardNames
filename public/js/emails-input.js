@@ -81,13 +81,9 @@ module.exports = function EmailsInput(
 
       const value = e.target.value;
 
-      if (value) {
-         const values = value.split(",");
+      if (value) pasteEmails(value);
 
-         for (let i = 0; i < values.length; i += 1) {
-            addEmail(value[i]);
-         }
-      }
+      e.currentTarget.value = "";
    };
 
    const getEmailNode = function (email) {
