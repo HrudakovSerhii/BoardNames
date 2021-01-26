@@ -61,23 +61,30 @@
 }
 
 .boardItem {
+  position: relative;
   background-color: $flower-blue;
   border: $flower-blue solid 1px;
   border-radius: 100px;
-  padding: 0 var(--baseline-2);
+  padding: 0 var(--baseline-4) 0 var(--baseline-2);
 
   span {
     padding-right: var(--baseline-1);
   }
 
-  &.invalidBoardItem {
-    background-color: $white;
-    border: none;
-    border-bottom: 1px dashed red;
-    border-radius: unset;
-    margin: 0 var(--baseline-2);
-    padding: 0;
+  .closeButton {
+    position: absolute;
+    top: 0;
+    bottom: 0;
   }
+}
+
+.invalidBoardItem {
+  background-color: white;
+  border: none;
+  border-bottom: 1px dashed red;
+  border-radius: unset;
+  margin: 0 4px 0 8px;
+  padding: 0 8px 0 0;
 }
 
 .newBoardItem {
@@ -85,5 +92,15 @@
 
   span {
     color: $gray-light
+  }
+}
+
+.closeButton {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+
+  &:focus {
+    outline: none;
   }
 }
