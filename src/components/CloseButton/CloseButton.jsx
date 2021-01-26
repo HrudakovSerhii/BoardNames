@@ -8,8 +8,8 @@ const closeIcon = (
    </svg>
 );
 
-const CloseButton = ({ onClick }) => (
-   <button onClick={() => onClick && onClick()} className={s.root}>
+const CloseButton = ({ onClick, className = "" }) => (
+   <button onClick={() => onClick && onClick()} className={`${s.root} ${className}`}>
       {closeIcon}
    </button>
 );
