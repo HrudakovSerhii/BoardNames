@@ -67,12 +67,10 @@ module.exports = function EmailsInput(
    const onKeyPress = function (e) {
       e.stopPropagation();
 
-      if (e.target.value.slice(-1) === ",") {
-         const value = e.target.value.slice(0, e.target.value.length - 1);
+      const value = e.target.value;
 
+      if (e.key === "," || e.key === "Enter") {
          addEmail(value);
-
-         e.currentTarget.value = "";
       }
    };
 
