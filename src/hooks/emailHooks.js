@@ -41,13 +41,16 @@ export const useEmails = () => {
    };
 
    // Return number of valid email addresses
-   const getCount = () => emails.filter((email) => emailRegexp.test(email)).length;
+   const alertEmailCounts = (emailsCounter) => {
+      alert(`${emailsCounter} emails in board`);
+   };
 
    return {
       emails,
       remove,
       addNew,
       addNewRandom,
-      getRandomEmail
+      getRandomEmail,
+      alertEmailCounts
    };
 };
