@@ -90,8 +90,15 @@
 .newBoardItem {
   padding: 0 var(--baseline-1);
 
-  span {
-    color: $gray-light
+  input {
+    color: $gray-light;
+    border: none;
+
+    &:focus {
+      outline: none;
+      border: 1px #C3C2CF solid;
+      box-sizing: border-box;
+    }
   }
 }
 
