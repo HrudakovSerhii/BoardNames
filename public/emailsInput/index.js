@@ -163,6 +163,7 @@ module.exports = function EmailsInput(
 
    return {
       el: inputField,
+      addEmail: addEmails,
       getEmailCount: () => _emailsList.length,
       getEmails: () => _emailsList
    };
