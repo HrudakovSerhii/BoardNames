@@ -13,6 +13,9 @@ module.exports = function EmailsInput(
    else window.addEventListener("load", () => init(value));
 
    let _counter = 0;
+   let _emailsList = [];
+
+   const inputField = window.document.createElement("div");
 
    const _emailItemTemplate =
       `<div class="email-item ` +
@@ -44,99 +47,123 @@ module.exports = function EmailsInput(
 
       templateEl.innerHTML = template;
 
-      return templateEl.content; // window.document.importNode(, true);
+      return templateEl.content;
    };
 
-   const inputField = window.document.createElement("div");
-   inputField.className = "emails-input " + className;
+   const addEmails = function (emailsString) {
+      const emails = emailsString.split(",");
 
-   const onClick = function (e) {
-      e.stopPropagation();
+      for (let i = 0; i < emails.length; i += 1) {
+         const email = emails[i].trim();
 
-      const value = e.target.value;
-      console.log(e.target, "onClick");
+         if (email && !_emailsList.find((d) => d === email)) {
+            addEmailBlock(email);
+
+            _emailsList.push(email);
+
+            onChange && onChange(_emailsList);
+         } else {
+            showError(`Email ${email} already exist in board`);
+         }
+      }
    };
 
-   const onEnter = function (e) {
-      e.stopPropagation();
+   const onRemoveEmail = function (e) {
+      const emailToRemove = e.target.parentNode.querySelector(".email-item span").textContent;
 
-      const value = e.target.value;
-      console.log(value, "onEnter");
+      _emailsList = _emailsList.filter((email) => email !== emailToRemove);
+
+      e.target.removeEventListener("click", this);
+      e.target.parentNode.remove();
+
+      onChange && onChange(_emailsList);
    };
 
+   const addEmailBlock = function (email) {
+      const isInvalid = !emailRegexp.test(email);
+      const emailBlock = getEmailBlockNode(email);
+
+      if (isInvalid) {
+         emailBlock.querySelector(".email-item").className += ` invalid-email-item ${incorrectEmailClassName}`;
+      }
+
+      inputField.insertBefore(emailBlock, inputField.querySelector(".email--item-new"));
+   };
+
+   const showError = function (error) {
+      alert(error);
+   };
+
+   // Catch ,(comma) and Enter keys press and create new emailBlocks
    const onKeyPress = function (e) {
       e.stopPropagation();
 
       const value = e.target.value;
 
       if (e.key === "," || e.key === "Enter") {
-         addEmail(value);
+         if (value.length > 1) {
+            addEmails(value);
+
+            e.currentTarget.value = "";
+         } else if (e.key === "," && !value.length) {
+            showError("Email can't start with `,` character");
+         }
       }
    };
 
+   // ivan@mail.ru, max@mail.ru
+   // Handle paste event on input
+   const onTextInput = function (e) {
+      const value = e.target.value;
+
+      if (value.includes(",")) {
+         if (value.length > 1) addEmails(value);
+         else e.currentTarget.value = "";
+
+         e.currentTarget.value = "";
+      }
+   };
+
+   // Create new emailBlocks if any text left in email input
    const onFocusOut = function (e) {
       e.stopPropagation();
 
       const value = e.target.value;
 
-      if (value) pasteEmails(value);
+      if (value.length) addEmails(value);
 
       e.currentTarget.value = "";
    };
 
-   const getEmailNode = function (email) {
+   const getEmailBlockNode = function (email) {
       const newEmailNode = getElByTemplate(_emailItemTemplate);
       const id = (_counter += 1);
 
       newEmailNode.querySelector(".email-item span").textContent = email;
       newEmailNode.querySelector(".email-item").setAttribute("key", id.toString());
-      newEmailNode.querySelector(".email-item .email-item-remove-button").addEventListener("click", removeEmail);
+      newEmailNode.querySelector(".email-item .email-item-remove-button").addEventListener("click", onRemoveEmail);
 
       return newEmailNode;
    };
 
-   // TODO: notify parentNode about emails number change
-   const addEmail = function (email) {
-      const isInvalid = !emailRegexp.test(email);
-      const emailNode = getEmailNode(email);
-
-      if (isInvalid) {
-         emailNode.querySelector(".email-item").className += ` invalid-email-item ${incorrectEmailClassName}`;
-      }
-
-      inputField.insertBefore(emailNode, inputField.querySelector(".email--item-new"));
-   };
-
-   // TODO: notify parentNode about emails number change
-   const removeEmail = function (e) {
-      e.target.removeEventListener("click", this);
-      e.target.parentNode.remove();
-   };
-
-   const getEmailCount = function () {
-      return _counter;
-   };
-
    const init = function (initEmails) {
-      const emails = initEmails.split(",");
+      inputField.setAttribute("class", `emails-input ${className}`);
+
       const newEmailInputNode = getElByTemplate(_newEmailItemTemplate);
 
-      newEmailInputNode.querySelector(".email-input--item-new").addEventListener("input", onKeyPress);
+      newEmailInputNode.querySelector(".email-input--item-new").addEventListener("keydown", onKeyPress);
+      newEmailInputNode.querySelector(".email-input--item-new").addEventListener("input", onTextInput);
+      newEmailInputNode.querySelector(".email-input--item-new").addEventListener("focusout", onFocusOut);
 
       inputField.append(newEmailInputNode);
       parentNode.append(inputField);
 
-      for (let i = 0; i < emails.length; i += 1) {
-         const email = emails[i];
-
-         addEmail(email);
-      }
+      addEmails(initEmails);
    };
 
    return {
       el: inputField,
-      count: _counter,
-      addEmail,
-      getEmailCount
+      getEmailCount: () => _emailsList.length,
+      getEmails: () => _emailsList
    };
 };
