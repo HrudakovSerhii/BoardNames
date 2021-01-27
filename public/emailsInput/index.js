@@ -147,7 +147,7 @@ module.exports = function EmailsInput(
    };
 
    const focusOnInput = function (e) {
-      e.target.querySelector(".email-input--item-new").focus();
+      if (e.target.className.includes("emails-input")) e.target.querySelector(".email-input--item-new").focus();
    };
 
    const init = function (initEmails) {
