@@ -146,8 +146,13 @@ module.exports = function EmailsInput(
       return newEmailNode;
    };
 
+   const focusOnInput = function (e) {
+      e.target.querySelector(".email-input--item-new").focus();
+   };
+
    const init = function (initEmails) {
       inputField.setAttribute("class", `emails-input ${className}`);
+      inputField.addEventListener("click", focusOnInput);
 
       const newEmailInputNode = getElByTemplate(_newEmailItemTemplate);
 
