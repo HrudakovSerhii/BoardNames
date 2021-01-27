@@ -26,7 +26,7 @@
     position: relative;
     height: 100%;
     padding: 0;
-    margin: 0 calc(var(--baseline-7) + var(--baseline-5)) var(--baseline-6);
+    margin: 0 calc(var(--baseline-7) + var(--baseline-5));
   }
 
   .controls {
@@ -63,6 +63,20 @@
     line-height: $email-item-min-height;
     vertical-align: center;
   }
+
+  .closeButton {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    svg {
+      pointer-events: none;
+    }
+  }
 }
 
 .boardItem {
@@ -98,21 +112,11 @@
   input {
     color: $gray-light;
     border: none;
+    line-height: $email-item-min-height;
 
     &:focus {
       outline: none;
-      border: 1px #C3C2CF solid;
       box-sizing: border-box;
     }
-  }
-}
-
-.closeButton {
-  background-color: transparent;
-  padding: 0;
-  border: none;
-
-  &:focus {
-    outline: none;
   }
 }
