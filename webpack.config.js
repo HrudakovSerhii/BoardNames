@@ -49,7 +49,7 @@ module.exports = (env, argv) => {
                      loader: "css-loader",
                      options: {
                         modules: {
-                           localIdentName: "[local]_[name]_[hash:base64:5]"
+                           localIdentName: "[local]_[name]_[fullhash:base64:5]"
                         },
                         sourceMap: true
                      }
@@ -90,7 +90,7 @@ module.exports = (env, argv) => {
       plugins: [
          new webpack.HotModuleReplacementPlugin(),
          new MiniCssExtractPlugin({
-            filename: "[name].[hash].css"
+            filename: "[name].[fullhash].css"
          }),
          new HtmlWebpackPlugin({
             filename: `${DIST_DIR}/index.html`,
