@@ -20,12 +20,12 @@ const Board = ({}) => {
       if (parentNode.current && !emailInputField.current) {
          emailInputField.current = EmailInput(
             parentNode.current,
-            emails.toString(),
             () => {},
+            emails.toString(),
             s.boardContent,
             `${s.baseBoardItem} ${s.boardItem}`,
-            s.closeButton,
             s.invalidBoardItem,
+            s.closeButton,
             `${s.baseBoardItem} ${s.newBoardItem}`,
             "add more people…"
          );
