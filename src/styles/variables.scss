@@ -8,7 +8,8 @@ $blue: #4262FF;
 $flower-blue: rgba(102, 153, 255, 0.2);
 
 // typography
-$base-font-family: "OpenSans";
+$base-font-family: 'Open Sans', arial;
+$base-bold-font-family: 'Open Sans Bold', arial;
 $base-font-size: 14px;
 $base-line-height: 1.25rem;
 $base-font-color: $black;
@@ -17,7 +18,8 @@ $normal-font-weight: 500;
 $bold-font-weight: 800;
 
 // container
-$bord-max-width: 540px;
+$board-max-width: 540px;
+$board-max-height: 300px;
 $emails-list-max-width: 440px;
 $bord-content-min-height: 96px;
 

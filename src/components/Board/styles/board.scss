@@ -3,22 +3,25 @@
 .root {
   display: flex;
   flex-direction: column;
-  width: $bord-max-width;
-  height: 300px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: $board-max-width;
+  height: $board-max-height;
+  box-shadow: 0 var(--baseline-2) var(--baseline-6) rgba(0, 0, 0, 0.2);
   background-color: $gray;
-  border-radius: 8px;
+  border-radius: var(--baseline-2);
 
   > div {
     padding: 0 calc(var(--baseline-7) + var(--baseline-5));
   }
 
-  .headTitle {
+  .title {
     padding-top: var(--baseline-8);
     padding-bottom: var(--baseline-6);
+    font-size: 20px;
+    color: $black;
 
-    .title {
-      font-size: 20px;
+    span {
+      font-family: $base-bold-font-family;
+      font-weight: bold;
     }
   }
 
