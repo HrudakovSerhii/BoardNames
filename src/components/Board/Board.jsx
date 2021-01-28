@@ -1,7 +1,6 @@
 import React from "react";
 
 import Button from "../Button/Button";
-import Title from "../Title/Title";
 
 import EmailInput from "../../../public/emailsInput";
 
@@ -46,8 +45,8 @@ const Board = ({}) => {
 
    return (
       <div className={s.root}>
-         <div className={s.headTitle}>
-            <Title className={s.title} text="Share Board name with others" boltedText="Board name" />
+         <div className={s.title}>
+            {"Share "} <span>Board name</span> {" with others"}
          </div>
          <div ref={parentNode} className={s.content}></div>
          <div className={s.controls}>
