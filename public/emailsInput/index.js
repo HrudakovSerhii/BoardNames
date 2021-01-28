@@ -28,7 +28,8 @@
  *       el:            return EmailInput element reference
  *   }
  */
-const EmailInput = function EmailsInput(
+
+function EmailsInput(
    parentNode,
    onChange,
    value = "",
@@ -48,11 +49,11 @@ const EmailInput = function EmailsInput(
    const inputField = window.document.createElement("div");
 
    const _emailItemTemplate =
-      `<div class="email-item ` +
+      `<div class="email--item email--item-valid ` +
       validEmailItemClassName +
       `">
         <span></span>
-        <button class="email-item-remove-button ` +
+        <button class="button--email-item-remove ` +
       removeButtonClassName +
       `">
            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,20 +87,22 @@ const EmailInput = function EmailsInput(
       for (let i = 0; i < emails.length; i += 1) {
          const email = emails[i].trim();
 
-         if (email && !_emailsList.find((d) => d === email)) {
-            addEmailBlock(email);
+         if (email) {
+            if (!_emailsList.find((d) => d === email)) {
+               addEmailBlock(email);
 
-            _emailsList.push(email);
+               _emailsList.push(email);
 
-            onChange && onChange(_emailsList);
-         } else {
-            showError(`Email ${email} already exist in board`);
+               onChange && onChange(_emailsList);
+            } else {
+               showError(`Email ${email} already exist in board`);
+            }
          }
       }
    };
 
    const onRemoveEmail = function (e) {
-      const emailToRemove = e.target.parentNode.querySelector(".email-item span").textContent;
+      const emailToRemove = e.target.parentNode.querySelector(".email--item span").textContent;
 
       _emailsList = _emailsList.filter((email) => email !== emailToRemove);
 
@@ -114,7 +117,7 @@ const EmailInput = function EmailsInput(
       const emailBlock = getEmailBlockNode(email);
 
       if (isInvalid) {
-         emailBlock.querySelector(".email-item").className += ` invalid-email-item ${invalidEmailItemClassName}`;
+         emailBlock.querySelector(".email--item").className += ` email--item-invalid ${invalidEmailItemClassName}`;
       }
 
       inputField.insertBefore(emailBlock, inputField.querySelector(".email--item-new"));
@@ -169,19 +172,19 @@ const EmailInput = function EmailsInput(
       const newEmailNode = getElByTemplate(_emailItemTemplate);
       const id = (_counter += 1);
 
-      newEmailNode.querySelector(".email-item span").textContent = email;
-      newEmailNode.querySelector(".email-item").setAttribute("key", id.toString());
-      newEmailNode.querySelector(".email-item .email-item-remove-button").addEventListener("click", onRemoveEmail);
+      newEmailNode.querySelector(".email--item span").textContent = email;
+      newEmailNode.querySelector(".email--item").setAttribute("key", id.toString());
+      newEmailNode.querySelector(".email--item .button--email-item-remove").addEventListener("click", onRemoveEmail);
 
       return newEmailNode;
    };
 
    const focusOnInput = function (e) {
-      if (e.target.className.includes("emails-input")) e.target.querySelector(".email-input--item-new").focus();
+      if (e.target.className.includes("emails-list")) e.target.querySelector(".email-input--item-new").focus();
    };
 
    const init = function (initEmails) {
-      inputField.setAttribute("class", `emails-input ${className}`);
+      inputField.setAttribute("class", `emails-list ${className}`);
       inputField.addEventListener("click", focusOnInput);
 
       const newEmailInputNode = getElByTemplate(_newEmailItemTemplate);
