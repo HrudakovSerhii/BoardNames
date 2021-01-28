@@ -1,15 +1,45 @@
-module.exports = function EmailsInput(
+/**
+ * EmailInput function to hold/add/remove email address strings
+ *
+ * Function create email items using initial value and input functionality.
+ * Use API functions to get access to content from EmailInput.
+ *
+ * @param {DocumentFragment}  parentNode        EmailInput container element
+ * @param {Function} onChange                   Event handler to catch Emails list updates
+ * @param {string}   value                      Initial value of Emails list. Should contain email addresses divided by comma (email@one.com,email@two.com...)
+ * @param {string}   className                  Custom style name of EmailInput root view
+ * @param {string}   validEmailItemClassName    Custom style name of valid email item view
+ * @param {string}   invalidEmailItemClassName  Custom style for invalid email item view
+ * @param {string}   removeButtonClassName      Custom style name of email item remove button view
+ * @param {string}   inputClassName             Custom style name of email item remove button view
+ * @param {string}   inputPlaceHolder           Input field placeHolder Custom style name of email item remove button view
+ *
+ * @return {
+ *    {
+ *       addEmail:      (function(email:string): void),
+ *       getEmails:     (function(): string[]),
+ *       getEmailCount: (function(): number),
+ *       el:            HTMLDivElement
+ *    }
+ * } {
+ *       addEmail:      add new Emails in a list,
+ *       getEmails:     return emails string array
+ *       getEmailCount: return emails count number
+ *       el:            return EmailInput element reference
+ *   }
+ */
+const EmailInput = function EmailsInput(
    parentNode,
-   value = "",
    onChange,
+   value = "",
    className = "",
-   emailItemClassName = "",
+   validEmailItemClassName = "",
+   invalidEmailItemClassName = "",
    removeButtonClassName = "",
-   incorrectEmailClassName = "",
-   emailInputClassName = "",
-   emailInputPlaceHolder = ""
+   inputClassName = "",
+   inputPlaceHolder = ""
 ) {
-   if (typeof window === "undefined") return;
+   if (typeof window === "undefined") return undefined;
    else window.addEventListener("load", () => init(value));
 
    let _counter = 0;
@@ -19,7 +49,7 @@ module.exports = function EmailsInput(
 
    const _emailItemTemplate =
       `<div class="email-item ` +
-      emailItemClassName +
+      validEmailItemClassName +
       `">
         <span></span>
         <button class="email-item-remove-button ` +
@@ -33,10 +63,10 @@ module.exports = function EmailsInput(
 
    const _newEmailItemTemplate =
       `<div class="email--item email--item-new ` +
-      emailInputClassName +
+      inputClassName +
       `">
         <input class="email-input--item-new" type="email" placeholder="` +
-      emailInputPlaceHolder +
+      inputPlaceHolder +
       `" value="" />
      </div>`;
 
@@ -84,7 +114,7 @@ module.exports = function EmailsInput(
       const emailBlock = getEmailBlockNode(email);
 
       if (isInvalid) {
-         emailBlock.querySelector(".email-item").className += ` invalid-email-item ${incorrectEmailClassName}`;
+         emailBlock.querySelector(".email-item").className += ` invalid-email-item ${invalidEmailItemClassName}`;
       }
 
       inputField.insertBefore(emailBlock, inputField.querySelector(".email--item-new"));
@@ -155,10 +185,11 @@ module.exports = function EmailsInput(
       inputField.addEventListener("click", focusOnInput);
 
       const newEmailInputNode = getElByTemplate(_newEmailItemTemplate);
+      const newEmailInputNodeInput = newEmailInputNode.querySelector(".email-input--item-new");
 
-      newEmailInputNode.querySelector(".email-input--item-new").addEventListener("keydown", onKeyPress);
-      newEmailInputNode.querySelector(".email-input--item-new").addEventListener("input", onTextInput);
-      newEmailInputNode.querySelector(".email-input--item-new").addEventListener("focusout", onFocusOut);
+      newEmailInputNodeInput.addEventListener("keydown", onKeyPress);
+      newEmailInputNodeInput.addEventListener("input", onTextInput);
+      newEmailInputNodeInput.addEventListener("focusout", onFocusOut);
 
       inputField.append(newEmailInputNode);
       parentNode.append(inputField);
@@ -173,3 +204,5 @@ module.exports = function EmailsInput(
       getEmails: () => _emailsList
    };
 };
+
+module.exports = EmailInput;
