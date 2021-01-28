@@ -2,7 +2,7 @@ import React from "react";
 
 import Button from "../Button/Button";
 
-import EmailInput from "../../../public/emailsInput";
+import EmailInput from "../../../public/emailsInput/js";
 
 import { useEmails } from "../../hooks/emailHooks";
 

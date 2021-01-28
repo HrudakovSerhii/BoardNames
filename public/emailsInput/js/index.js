@@ -87,7 +87,7 @@ function EmailsInput(
       for (let i = 0; i < emails.length; i += 1) {
          const email = emails[i].trim();
 
-         if (email) {
+         if (email?.length) {
             if (!_emailsList.find((d) => d === email)) {
                addEmailBlock(email);
 
@@ -206,6 +206,6 @@ function EmailsInput(
       getEmailCount: () => _emailsList.length,
       getEmails: () => _emailsList
    };
-};
+}
 
 if (typeof module !== "undefined") module.exports = EmailsInput;
