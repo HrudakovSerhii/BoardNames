@@ -208,4 +208,4 @@ function EmailsInput(
    };
 };
 
-module.exports = EmailInput;
+if (typeof module !== "undefined") module.exports = EmailsInput;
