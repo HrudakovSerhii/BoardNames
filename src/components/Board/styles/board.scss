@@ -66,20 +66,6 @@
     line-height: $email-item-min-height;
     vertical-align: center;
   }
-
-  .closeButton {
-    background-color: transparent;
-    padding: 0;
-    border: none;
-
-    &:focus {
-      outline: none;
-    }
-
-    svg {
-      pointer-events: none;
-    }
-  }
 }
 
 .boardItem {
@@ -97,6 +83,17 @@
     position: absolute;
     top: 0;
     bottom: 0;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    svg {
+      pointer-events: none;
+    }
   }
 }
 
