@@ -5,10 +5,11 @@
   border-radius: 6px;
   border: none;
   height: 100%;
+  padding: var(--baseline-2) var(--baseline-4);;
 
   span {
     color: $white;
+    font-size: $base-font-size;
     line-height: var(--baseline-6);
-    margin: var(--baseline-2) var(--baseline-4);
   }
 }
