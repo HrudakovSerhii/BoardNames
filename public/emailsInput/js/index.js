@@ -43,12 +43,12 @@ function EmailsInput(
    if (typeof window === "undefined") return undefined;
    else window.addEventListener("load", () => init(value));
 
-   let _counter = 0;
-   let _emailsList = [];
+   var _counter = 0;
+   var _emailsList = [];
 
-   const inputField = window.document.createElement("div");
+   var inputField = window.document.createElement("div");
 
-   const _emailItemTemplate =
+   var _emailItemTemplate =
       `<div class="email--item email--item-valid ` +
       validEmailItemClassName +
       `">
@@ -62,7 +62,7 @@ function EmailsInput(
         </button>
      </div>`;
 
-   const _newEmailItemTemplate =
+   var _newEmailItemTemplate =
       `<div class="email--item email--item-new ` +
       inputClassName +
       `">
@@ -71,21 +71,21 @@ function EmailsInput(
       `" value="" />
      </div>`;
 
-   const emailRegexp = /(?!.*\.{2})^([A-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[A-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/;
+   var emailRegexp = /(?!.*\.{2})^([A-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[A-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/;
 
-   const getElByTemplate = function (template) {
-      const templateEl = window.document.createElement("template");
+   var getElByTemplate = function (template) {
+      var templateEl = window.document.createElement("template");
 
       templateEl.innerHTML = template;
 
       return templateEl.content;
    };
 
-   const addEmails = function (emailsString) {
-      const emails = emailsString.split(",");
+   var addEmails = function (emailsString) {
+      var emails = emailsString.split(",");
 
-      for (let i = 0; i < emails.length; i += 1) {
-         const email = emails[i].trim();
+      for (var i = 0; i < emails.length; i += 1) {
+         var email = emails[i].trim();
 
          if (email?.length) {
             if (!_emailsList.find((d) => d === email)) {
@@ -101,8 +101,8 @@ function EmailsInput(
       }
    };
 
-   const onRemoveEmail = function (e) {
-      const emailToRemove = e.target.parentNode.querySelector(".email--item span").textContent;
+   var onRemoveEmail = function (e) {
+      var emailToRemove = e.target.parentNode.querySelector(".email--item span").textContent;
 
       _emailsList = _emailsList.filter((email) => email !== emailToRemove);
 
@@ -112,9 +112,9 @@ function EmailsInput(
       onChange && onChange(_emailsList);
    };
 
-   const addEmailBlock = function (email) {
-      const isInvalid = !emailRegexp.test(email);
-      const emailBlock = getEmailBlockNode(email);
+   var addEmailBlock = function (email) {
+      var isInvalid = !emailRegexp.test(email);
+      var emailBlock = getEmailBlockNode(email);
 
       if (isInvalid) {
          emailBlock.querySelector(".email--item").className += ` email--item-invalid ${invalidEmailItemClassName}`;
@@ -123,15 +123,15 @@ function EmailsInput(
       inputField.insertBefore(emailBlock, inputField.querySelector(".email--item-new"));
    };
 
-   const showError = function (error) {
+   var showError = function (error) {
       alert(error);
    };
 
    // Catch ,(comma) and Enter keys press and create new emailBlocks
-   const onKeyPress = function (e) {
+   var onKeyPress = function (e) {
       e.stopPropagation();
 
-      const value = e.target.value;
+      var value = e.target.value;
 
       if (e.key === "," || e.key === "Enter") {
          if (value.length > 1) {
@@ -146,8 +146,8 @@ function EmailsInput(
 
    // ivan@mail.ru, max@mail.ru
    // Handle paste event on input
-   const onTextInput = function (e) {
-      const value = e.target.value;
+   var onTextInput = function (e) {
+      var value = e.target.value;
 
       if (value.includes(",")) {
          if (value.length > 1) addEmails(value);
@@ -158,19 +158,19 @@ function EmailsInput(
    };
 
    // Create new emailBlocks if any text left in email input
-   const onFocusOut = function (e) {
+   var onFocusOut = function (e) {
       e.stopPropagation();
 
-      const value = e.target.value;
+      var value = e.target.value;
 
       if (value.length) addEmails(value);
 
       e.currentTarget.value = "";
    };
 
-   const getEmailBlockNode = function (email) {
-      const newEmailNode = getElByTemplate(_emailItemTemplate);
-      const id = (_counter += 1);
+   var getEmailBlockNode = function (email) {
+      var newEmailNode = getElByTemplate(_emailItemTemplate);
+      var id = (_counter += 1);
 
       newEmailNode.querySelector(".email--item span").textContent = email;
       newEmailNode.querySelector(".email--item").setAttribute("key", id.toString());
@@ -179,16 +179,16 @@ function EmailsInput(
       return newEmailNode;
    };
 
-   const focusOnInput = function (e) {
+   var focusOnInput = function (e) {
       if (e.target.className.includes("emails-list")) e.target.querySelector(".email-input--item-new").focus();
    };
 
-   const init = function (initEmails) {
+   var init = function (initEmails) {
       inputField.setAttribute("class", `emails-list ${className}`);
       inputField.addEventListener("click", focusOnInput);
 
-      const newEmailInputNode = getElByTemplate(_newEmailItemTemplate);
-      const newEmailInputNodeInput = newEmailInputNode.querySelector(".email-input--item-new");
+      var newEmailInputNode = getElByTemplate(_newEmailItemTemplate);
+      var newEmailInputNodeInput = newEmailInputNode.querySelector(".email-input--item-new");
 
       newEmailInputNodeInput.addEventListener("keydown", onKeyPress);
       newEmailInputNodeInput.addEventListener("input", onTextInput);
