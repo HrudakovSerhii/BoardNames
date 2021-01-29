@@ -41,7 +41,10 @@ function EmailsInput(
    inputPlaceHolder = ""
 ) {
    if (typeof window === "undefined") return undefined;
-   else window.addEventListener("load", () => init(value));
+   else
+      window.addEventListener("load", () => {
+         if (!parentNode.hasChildNodes()) init(value);
+      });
 
    var _counter = 0;
    var _emailsList = [];
@@ -189,7 +192,7 @@ function EmailsInput(
       inputField.setAttribute("class", `emails-list ${className}`);
       inputField.addEventListener("click", focusOnInput);
 
-      var newEmailInputNode = getElByTemplate(_newEmailItemTemplate, "email-input");
+      var newEmailInputNode = getElByTemplate(_newEmailItemTemplate, "email-input-el");
       var newEmailInputNodeInput = newEmailInputNode.querySelector(".email-input--item-new");
 
       newEmailInputNodeInput.addEventListener("keydown", onKeyPress);
@@ -201,6 +204,8 @@ function EmailsInput(
 
       addEmails(initEmails);
    };
+
+   init(value);
 
    return {
       el: inputField,
