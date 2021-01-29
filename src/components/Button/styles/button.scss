@@ -4,12 +4,11 @@
   background-color: $blue;
   border-radius: 6px;
   border: none;
-  padding: var(--baseline-2) var(--baseline-4);
+  height: 100%;
 
   span {
     color: $white;
-    font-size: var(--base-font-size);
     line-height: var(--baseline-6);
-    vertical-align: center;
+    margin: var(--baseline-2) var(--baseline-4);
   }
 }
