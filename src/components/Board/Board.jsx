@@ -45,10 +45,12 @@ const Board = ({}) => {
 
    return (
       <div className={s.root}>
-         <div className={s.title}>
-            {"Share "} <span>Board name</span> {" with others"}
+         <div className={s.top}>
+            <div className={s.title}>
+               {"Share "} <span>Board name</span> {" with others"}
+            </div>
+            <div ref={parentNode} className={s.content}></div>
          </div>
-         <div ref={parentNode} className={s.content}></div>
          <div className={s.controls}>
             <Button title="Add email" onClick={() => addNewEmail()} />
             <Button title="Get emails count" onClick={getEmailsCount} />

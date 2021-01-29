@@ -9,8 +9,12 @@
   background-color: $gray;
   border-radius: var(--baseline-2);
 
-  > div {
-    padding: 0 calc(var(--baseline-7) + var(--baseline-5));
+  .top {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0 $root-spacing;
+    margin-bottom: var(--baseline-6);
   }
 
   .title {
@@ -28,15 +32,14 @@
   .content {
     position: relative;
     height: 100%;
+    max-height: $board-content-min-height;
     padding: 0;
-    margin: 0 calc(var(--baseline-7) + var(--baseline-5));
   }
 
   .controls {
     display: flex;
     flex-direction: row;
-    padding-top: var(--baseline-6);
-    padding-bottom: var(--baseline-7);
+    padding: var(--baseline-6) 0 var(--baseline-7) $root-spacing;
     background-color: $white;
 
     button {
@@ -48,7 +51,6 @@
 .boardContent {
   width: 100%;
   height: 100%;
-  max-height: $bord-content-min-height;
   background-color: $white;
   border-radius: var(--baseline-1);
   padding: var(--baseline-1);

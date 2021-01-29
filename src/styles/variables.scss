@@ -21,7 +21,8 @@ $bold-font-weight: 800;
 $board-max-width: 540px;
 $board-max-height: 300px;
 $emails-list-max-width: 440px;
-$bord-content-min-height: 96px;
+$board-content-min-height: 96px;
+$root-spacing: calc(var(--baseline-7) + var(--baseline-5));
 
 // Button
 $email-item-min-height: 24px;
@@ -36,5 +37,6 @@ $email-item-min-height: 24px;
   --baseline-6: calc(var(--baseline) * 3);      // 24
   --baseline-7: calc(var(--baseline) / 2 * 7);  // 28
   --baseline-8: calc(var(--baseline) * 4);      // 32
+  --baseline-10: calc(var(--baseline) * 10);    // 40
 }
 
